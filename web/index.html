@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="UTF-8"> <!-- codificación de caracteres-->
+    <title>Angular Maps</title>
+    
+    
+    
+    <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css'> 
+
+        <link rel="stylesheet" href="css/style.css"> <!-- referencia de la hoja de estilo-->
+  </head>
+
+  <body>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js"></script><!--es la ubicación de un archivo de JavaScript que carga todos los símbolos y las definiciones que se necesitan para usar la Google Maps AP-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script><!-- utiliza un scrip externo en este caso el CDN de google para tener el framework de angulars y quede listo para utilizarlo-->
+<div ng-app="mapsApp" ng-controller="MapCtrl"> <!--se define nombre de la app de angular y del controlador de anguars-->
+  <div class="container">
+     <H3> Markers </H3> <!-- Título de la ventana principal (Marcadores)-->
+   <!-- <pre> {{cities | json}}</pre> -->
+    <div class="row">
+      <div class="col-sm-12">
+          <!-- Creación del formulario e omplementación del método post que permite enviar la información-->
+          <form method='post' name='form' onSubmit="obtenerDatos(this)">
+          <!-- Etiquetas para definir el nombre de los campos a rellenar-->
+        <label for="">Name</label>
+        <input type="text" class="form-control" ng-model="city" id="ciudad"/> <!-- Crea el cuadro de texto-->
+        <!-- Etiquetas para definir el nombre de los campos a rellenar-->
+        <label for="">Descripción</label>
+        <input type="text" class="form-control" ng-model="desc" id="descripcion"/> <!-- Crea el cuadro de texto-->
+        <!-- Etiquetas para definir el nombre de los campos a rellenar-->
+        <label for="">Latitud</label>
+        <input type="text" class="form-control" ng-model="lat" id="latitud"/> <!-- Crea el cuadro de texto-->
+        <!-- Etiquetas para definir el nombre de los campos a rellenar-->
+        <label for="">Longitud</label>
+        <input type="text" class="form-control" ng-model="long" id="longitud"/><!-- Crea el cuadro de texto-->
+        <br>
+        <button class="pull-right btn btn-success" ng-click="agregarDireccion()">Nueva Dirección</button>
+          <input class="btn btn-default" type ='button' value = 'Descargar CSV' onclick="window.open('ddd.html', 'width=800,height=600');"/>  <!-- boton que manda a guardar los datos previamente ingresados y y borra los campos para permitir ingresar de nuevo los datos-->
+           </form>
+          
+      </div>
+    </div>
+    <br / >  
+    <div id="map"></div> <!-- permite visualizar el mapa-->
+    <br / >
+    <div class="row">
+      <div class="col-sm-12">
+              <ul>
+        <li data-ng-repeat="item in cities">
+          {{item.city}}
+          <button class="btn btn-danger" ng-click="removeMarker($index)">Remover</button> <!-- Boton que elimina los registros ya guardados-->
+        </li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</div>
+        <script src="js/index.js"></script> <!-- -->
+  </body>
+</html>

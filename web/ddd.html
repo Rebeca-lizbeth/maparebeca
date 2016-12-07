@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8"><!-- codificación de caracteres-->
+  <title>Guardar CSV</title> <!-- Título de la página-->
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!--Asignación de tamaño de pantalla-->
+
+  
+  <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'> <!-- Hoja de estilo de bootstrap-->
+
+      <link rel="stylesheet" href="css/style.css"><!-- referencia de la hoja de estilo-->
+
+  
+</head>
+
+<body>
+  <body ng-app="csvApp"><!--etiqueta de identificación que la pagina esta hecha en angulars -->
+  <br>
+  <div ng-controller="csvController" class="container" ng-cloack> <!-- Contenedor que controlará la funcion desde leer la información del archivo javaScript mediante el uso de una tabla -->
+    <h1>Guardar datos de localización</h1> <!--Título de la tabla-->
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+              <!-- Creación de una tabla para que se muestren los datos ya agregados -->
+            <tr>
+              <th>City</th>
+              <th>Description</th>
+              <th>latitud</th>
+              <th>longitud</th>
+            </tr>
+          </thead>
+            <!-- En la tabla se introduciran los datos que estan aqui-->
+          <tbody>
+            <tr ng-repeat='reg in datos'>
+              <td>{{reg.city}}</td>
+              <td>{{reg.desc}}</td>
+              <td>{{reg.lat}}</td>
+              <td>{{reg.long}}</td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+      <!-- Botón creado que permita almacenar los datos de la tabla en un archivo CSV-->
+    <button type="button" class="btn btn-default" ng-csv="datos" filename="Datos.csv" csv-header="['City', 'Description', 'latitud', 'longitud']" charset="utf-8"><span class="glyphicon glyphicon-download-alt">&nbsp;</span>Descargar CSV</button>
+   
+  </div>
+</body>
+  <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js'></script> <!-- utiliza un scrip externo en este caso el CDN de google para tener el framework de angulars y quede listo para utilizarlo-->
+<script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-sanitize.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/ng-csv/0.3.3/ng-csv.min.js'></script><!-- librería de manipulacion de archivos CSV-->
+
+    <script src="js/index2.js"></script>

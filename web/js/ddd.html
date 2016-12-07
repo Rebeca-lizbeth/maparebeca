@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Guardar CSV</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+  
+  <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <body ng-app="csvApp">
+  <br>
+  <div ng-controller="csvController" class="container" ng-cloack>
+    <h1>Guardar datos de localización</h1>
+    <br>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>City</th>
+              <th>Description</th>
+              <th>lagtitud</th>
+              <th>lbtitud</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat='reg in datos'>
+              <td>{{reg.city}}</td>
+              <td>{{reg.desc}}</td>
+              <td>{{reg.lat}}</td>
+              <td>{{reg.long}}</td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <button type="button" class="btn btn-default" ng-csv="datos" filename="Datos.csv" csv-header="['City', 'Description', 'latitud', 'longitud']" charset="utf-8"><span class="glyphicon glyphicon-download-alt">&nbsp;</span>Descargar CSV</button>
+   
+  </div>
+</body>
+  <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-sanitize.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/ng-csv/0.3.3/ng-csv.min.js'></script>
+
+    <script src="js/index2.js"></script>
